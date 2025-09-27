@@ -41,28 +41,23 @@ h2 {
   color: #0d1117;
 }
 
-/* ===== Screenshot Gallery ===== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 15px;
+/* ===== Gallery grid (original size but responsive) ===== */
+.gallery{
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center each image */
+  gap: 20px;
 }
 
-/* Default gallery mode: contain (shows whole screenshots without distortion) */
-.gallery img {
-  width: 100%;
-  height: auto;
+.gallery img{
+  display: block;
+  max-width: 100%;  /* don’t overflow page */
+  height: auto;     /* preserve aspect ratio */
   border-radius: 6px;
-  border: 1px solid #ccc;
-  object-fit: contain;
-  background: #f9f9f9;
-  padding: 5px;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.gallery img:hover {
-  transform: scale(1.03);
+  border: 1px solid #e2e8f0;
+  background: #fafafa;
+  padding: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 /* Optional alternative mode: uniform thumbnails (use class="gallery cover") */
