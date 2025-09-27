@@ -34,22 +34,24 @@ dotnet run --urls "http://localhost:5055"
 Swagger UI → http://localhost:5055/swagger
 GET Customers → http://localhost:5055/api/samplecustomers
 
-🛠️ Tech Stack
+---
+## 🛠️ Tech Stack
 ETL: SSIS (SQL Server Integration Services)
 Backend: ASP.NET Core Web API
 Language: C#
 Database: In-memory store (no real DB required)
 Documentation/UI: Swagger
 
-📷 Screenshots
-SSIS Part (shows ETL flow)
+---
+## 📷 Screenshots
+### SSIS Part (shows ETL flow)
 1. Control Flow 
 <img width="1919" height="1130" alt="ssis_control_flow" src="https://github.com/user-attachments/assets/90c80070-41f5-4c13-a68b-5790c4cee8c2" />
 
 2. Data Flow
 <img width="1915" height="1084" alt="ssis_data_flow" src="https://github.com/user-attachments/assets/db62476a-33c4-45cb-854c-5dc9e4b690de" />
 
-API Part (shows endpoints working)
+### API Part (shows endpoints working)
 3. Swagger UI Overview
 <img width="1891" height="1073" alt="api_swagger" src="https://github.com/user-attachments/assets/356f2655-7b0b-4691-aa9b-504cc8a7f977" />
 
@@ -63,12 +65,12 @@ API Part (shows endpoints working)
 <img width="1886" height="1029" alt="api_post_response" src="https://github.com/user-attachments/assets/ee25b40e-3666-4131-a22b-99c5003a2adf" />
 
 ---
-🔒 Security Note
+## 🔒 Security Note
 Files like appsettings.json and SSIS config files (.dtsConfig) contain dummy values only.
 Real database credentials, API keys, or sensitive information are not included.
 
 ---
-✨ Author
+## ✨ Author
 👩‍💻 Aditi Agarwal
    - `https://github.com/dataanalystaditi` → your GitHub username.  
    - `https://www.linkedin.com/in/aditiagarwal9/` → your LinkedIn profile link.  
