@@ -1,0 +1,2904 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/8/2025 12:14:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IN-5CD4371ZY6"
+  DTS:CreatorName="EAD\aagarwal245"
+  DTS:DTSID="{1F0E38FD-F9CD-4F48-BA78-7AE9D7032D94}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="174"
+  DTS:VersionGUID="{68A18B8C-2653-414F-9BF2-1C5644D32A74}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{9D4FDD51-D196-41A7-A198-977E26A94C11}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::SourceExcelPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\test\Customers.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[IN-5CD4371ZY6.Policy_Portal_DB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{526CC336-E8E2-41F1-B1DB-D8801DA6BE45}"
+      DTS:ObjectName="IN-5CD4371ZY6.Policy_Portal_DB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=IN-5CD4371ZY6;User ID=;Initial Catalog=Policy_Portal_DB;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Trust Server Certificate=True;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-Package-{526CC336-E8E2-41F1-B1DB-D8801DA6BE45}IN-5CD4371ZY6.Policy_Portal_DB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RejectedDataConnection]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6EB18A5C-84A5-4DFA-877C-5742CEED92E1}"
+      DTS:ObjectName="RejectedDataConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::RejectedDataFilePath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\RejectedData\rejected_customers.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID"
+              DTS:DTSID="{3F8A0B49-F68F-41B2-B053-551EAAE3C643}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{811228A2-AA14-41DB-9309-A86C5B90C3EB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Email"
+              DTS:DTSID="{1798670A-FD25-47E4-ACA4-8EB84E90B419}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerID_Converted"
+              DTS:DTSID="{880D513E-D39F-40AE-9B1F-2E13E05DF8F9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name_Converted"
+              DTS:DTSID="{42F8DA44-3F9C-4CA1-91B5-C7756F130FAF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS_API_Logs]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5FC8A34A-20CF-47FC-86E7-50BCA9C19A63}"
+      DTS:ObjectName="SSIS_API_Logs">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::LogFilePath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\Logs\SSISLog_2025-07-25.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\SSIS_API_Integration\SSIS_API_DB_Config.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{F2EA71D5-5142-4B0E-8E89-BC8A872B8900}"
+      DTS:ObjectName="SSIS_API_Config" />
+  </DTS:Configurations>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="SSIS_API_Logs"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Writes log entries for events to a CSV file"
+      DTS:DTSID="{A538D6B6-8679-4E77-B9DC-67C02016CD5A}"
+      DTS:ObjectName="SSIS log provider for Text files">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{407C5794-97BA-493A-B78E-43191884A8D4}"
+      DTS:ObjectName="ExcelPath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\Customers.xlsx</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{4F78984F-E43D-4594-8F2C-7AEA09F166AD}"
+      DTS:ObjectName="SqlConnectionString">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=IN-5CD4371ZY6;Initial Catalog=Policy_Portal_DB;Integrated Security=True</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0C8D9E32-A691-4E64-9588-14797C3BD7BC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ApiCallStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">""</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A9E63228-0856-467A-ABD5-61103D7A75F2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="API_URL">
+      <DTS:VariableValue
+        DTS:DataType="8">https://localhost:7052/api/Customer</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34755F14-4559-43A6-8BCE-3D5F97BABD11}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="InvalidRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DA28A70A-3EF8-4BEC-BE04-64A2352A8E66}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;C:\\PIP 2025 Learnings\\1_SSIS_Packages\\SSIS_API_Integration\\Logs\\SSISLog_&quot; &#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 4, 1252) DATEPART(&quot;yyyy&quot;, GETDATE()), 4)&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot;, GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot;, GETDATE()), 2)&#xA;+ &quot;_&quot;&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;hh&quot;, GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mi&quot;, GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;ss&quot;, GETDATE()), 2)&#xA;+ &quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\Logs\SSISLog_20250725_210626.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{48E7291D-1300-4F0B-BD81-8AE6C846DFF6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;C:\\PIP 2025 Learnings\\1_SSIS_Packages\\SSIS_API_Integration\\Logs\\SSISLog_&quot; &#xA;+ (DT_STR, 10, 1252) (DT_DBDATE) GETDATE() + &quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\Logs\SSISLog_2025-07-25.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{55122586-8DC8-42D6-8B0E-B9B5591FE7C1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsLoaded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B3142701-B08E-46DF-9526-4B0F04B9C522}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RejectedDataFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\PIP 2025 Learnings\1_SSIS_Packages\SSIS_API_Integration\RejectedData\rejected_customers.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AC7F4A5B-E0A6-499F-ABBC-C1614B9DC2A5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceExcelPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\test\Customers.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">6,7,OnError,13,OnInformation,13,OnPostExecute,12,OnPreExecute,12,OnTaskFailed,9,OnWarning</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{A538D6B6-8679-4E77-B9DC-67C02016CD5A}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract and Load Data from Excel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F6E33051-C716-45B0-99B9-5F973D4B4DF0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract and Load Data from Excel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract and Load Data from Excel\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input].Columns[CustomerID_Converted]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID_Converted"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input].Columns[Name_Converted]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name_Converted"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[ValidRows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="ValidRows"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]}) &amp;&amp; ![ISNULL](#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]}) &amp;&amp; [LEN]([TRIM](#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]})) &gt; 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(CustomerID_Converted) &amp;&amp; !ISNULL(Name_Converted) &amp;&amp; LEN(TRIM(Name_Converted)) &gt; 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[InvalidRows]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="InvalidRows"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]}) || [ISNULL](#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]}) || [LEN]([TRIM](#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]})) == 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(CustomerID_Converted) || ISNULL(Name_Converted) || LEN(TRIM(Name_Converted)) == 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Data Conversion.Inputs[Data Conversion Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]"
+                      name="CustomerID_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[CustomerID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]"
+                      name="Name_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract and Load Data from Excel\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[CustomerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Email]"
+                      length="255"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[CustomerID]"
+                      dataType="r8"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="16393"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract and Load Data from Excel\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[RejectedDataConnection]"
+                  connectionManagerRefId="Package.ConnectionManagers[RejectedDataConnection]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].Columns[CustomerID_Converted]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID_Converted"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CustomerID_Converted]"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].Columns[Name_Converted]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name_Converted"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name_Converted]"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CustomerID_Converted]"
+                      dataType="i4"
+                      name="CustomerID_Converted" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name_Converted]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name_Converted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[OLE DB Destination 1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[OLE DB Destination 1]) [refTable]
+where [refTable].[Email] = ? and [refTable].[Name] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Email" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Email]};#{Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract and Load Data from Excel\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[IN-5CD4371ZY6.Policy_Portal_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[IN-5CD4371ZY6.Policy_Portal_DB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Email</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input].Columns[Name_Converted]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name_Converted"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Name_Converted]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID_Converted"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_Converted]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerID</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[OLE DB Destination 1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract and Load Data from Excel\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[IN-5CD4371ZY6.Policy_Portal_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[IN-5CD4371ZY6.Policy_Portal_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output].Columns[CustomerID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Load Data from Excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Load Data from Excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RecordsLoaded</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Load Data from Excel\Row Count 1"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count 1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::InvalidRows</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Extract and Load Data from Excel\Row Count 1.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Load Data from Excel\Row Count 1.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Extract and Load Data from Excel\Row Count 1.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[Data Conversion Output]"
+              endId="Package\Extract and Load Data from Excel\Conditional Split.Inputs[Conditional Split Input]"
+              name="Data Conversion Output"
+              startId="Package\Extract and Load Data from Excel\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[Excel Source Output]"
+              endId="Package\Extract and Load Data from Excel\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Extract and Load Data from Excel\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[InvalidRows]"
+              endId="Package\Extract and Load Data from Excel\Row Count 1.Inputs[Row Count Input 1]"
+              name="InvalidRows"
+              startId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[InvalidRows]" />
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[Lookup No Match Output]"
+              endId="Package\Extract and Load Data from Excel\Row Count.Inputs[Row Count Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Extract and Load Data from Excel\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[Row Count Output 1]"
+              endId="Package\Extract and Load Data from Excel\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Extract and Load Data from Excel\Row Count.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[Row Count Output 11]"
+              endId="Package\Extract and Load Data from Excel\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Extract and Load Data from Excel\Row Count 1.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\Extract and Load Data from Excel.Paths[ValidRows]"
+              endId="Package\Extract and Load Data from Excel\Lookup.Inputs[Lookup Input]"
+              name="ValidRows"
+              startId="Package\Extract and Load Data from Excel\Conditional Split.Outputs[ValidRows]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{ACDB087B-F6FA-40BB-996D-42CC498B281C}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_9c919a97dc6e4bb487b418423496899a"
+          VSTAMajorVersion="16"
+          VSTAMinorVersion="0"
+          Language="CSharp">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_9c919a97dc6e4bb487b418423496899a")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("DXC Technology")]
+[assembly: AssemblyProduct("ST_9c919a97dc6e4bb487b418423496899a")]
+[assembly: AssemblyCopyright("Copyright @ DXC Technology 2025")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.Net.Http;
+using System.Text;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+
+[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPoint]
+public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+{
+    public void Main()
+    {
+        try
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // Replace this with your actual API URL if different
+                string apiUrl = "http://localhost:5100/api/customer";
+
+                // Sample payload (adjust or generate dynamically in future)
+                var json = @"{
+                    ""CustomerID"": 101,
+                    ""Name"": ""Test User"",
+                    ""Email"": ""testuser@example.com""
+                }";
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = client.PostAsync(apiUrl, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("API call successful: " + response.StatusCode);
+                    Dts.TaskResult = (int)ScriptResults.Success;
+                }
+                else
+                {
+                    MessageBox.Show("API call failed: " + response.StatusCode);
+                    Dts.TaskResult = (int)ScriptResults.Failure;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Show full error message in MessageBox
+            MessageBox.Show("API call failed!\n\n" + ex.ToString());
+
+            Dts.TaskResult = (int)ScriptResults.Failure;
+        }
+
+    }
+
+    enum ScriptResults
+    {
+        Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+        Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_9c919a97dc6e4bb487b418423496899a.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{248CDC10-AB25-42AE-B2FA-1E9685F581EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_9c919a97dc6e4bb487b418423496899a</RootNamespace>
+    <AssemblyName>ST_9c919a97dc6e4bb487b418423496899a</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_9c919a97dc6e4bb487b418423496899a</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_9c919a97dc6e4bb487b418423496899a</msb:DisplayName>
+    <msb:ProjectId>{8F2DE601-6FE0-4454-843A-4EDE8E907965}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_9c919a97dc6e4bb487b418423496899a.csproj" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_9c919a97dc6e4bb487b418423496899a.Properties.Settings.get_Default():ST_9c919a97dc6e4bb487b418423496899a.Properties.Sett" +
+    "ings")]
+
+namespace ST_9c919a97dc6e4bb487b418423496899a.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_9c919a97dc6e4bb487b418423496899a.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_9c919a97dc6e4bb487b418423496899a.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_9c919a97dc6e4bb487b418423496899a.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_9c919a97dc6e4bb487b418423496899a.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_9c919a97dc6e4bb487b418423496899a.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_9c919a97dc6e4bb487b418423496899a.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAK76dGgAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAA7jEA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAJwxAABPAAAAAEAAALAEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA9BEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAALAEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADQ
+MQAAAAAAAEgAAAACAAUAtCEAADAPAAABAAAAAAAAAOQwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswAwDRAAAAAQAAEXMQAAAKCnIBAABwC3JHAABwKBEAAApy
+gAEAcHMSAAAKDAYHCG8TAAAKbxQAAAoNCW8VAAAKLDNyogEAcAlvFgAAChMEEgT+FhIAAAFvFwAA
+CigYAAAKKBkAAAomAigaAAAKFm8bAAAKKzFyzgEAcAlvFgAAChMEEgT+FhIAAAFvFwAACigYAAAK
+KBkAAAomAigaAAAKF28bAAAK3goGLAYGbxwAAArc3icTBXLyAQBwEQVvFwAACigYAAAKKBkAAAom
+AigaAAAKF28bAAAK3gAqAAAAARwAAAIABgCXnQAKAAAAAAAAAACpqQAnEwAAAR4CKB0AAAoqHgIo
+HgAACiqufgEAAAQtHnIYAgBw0AMAAAIoHwAACm8gAAAKcyEAAAqAAQAABH4BAAAEKhp+AgAABCoe
+AoACAAAEKhp+AwAABCoeAigiAAAKKi5zCAAABoADAAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0LjAu
+MzAzMTkAAAAABQBsAAAAPAQAACN+AACoBAAAJAYAACNTdHJpbmdzAAAAAMwKAACMAgAAI1VTAFgN
+AAAQAAAAI0dVSUQAAABoDQAAyAEAACNCbG9iAAAAAAAAAAIAAAFXHaIJCQMAAAD6ATMAFgAAAQAA
+ACcAAAAFAAAABgAAAAkAAAABAAAAIgAAAAIAAAAQAAAAAQAAAAIAAAADAAAABAAAAAEAAAABAAAA
+BQAAAAEAAAABAAAAAACkAwEAAAAAAAYAVQKFBAYA5AKFBAYAoQFyBA8A+QQAAAYAzgEZBAYAOAIZ
+BAYAGQIZBAYAywIZBAYAdQIZBAYAjgIZBAYA5QEZBAYAAAIRAwoAqQJTAwoAGAFTAw4A1gVBBA4A
+4QVBBA4AnwBBBBIAeACYBQYAKwTMAwYA0wPMAwYAhAFyBAYAkQXMAwYAVQSlBAYANQQEBBIAVAGO
+AxIAtQGOAxIANAHvAwYAaQGFBAYACAP7BQYAAQBABQ4A7wVBBAYALQPMAxYADAZXBRYAugVXBQoA
+fANTAwYAswDMAwYA4wDMAwYAvwDMAwYAGwYZBAAAAAARAAAAAAABAAEAAQAQAOQDAAA5AAEAAQAA
+ABAArAQIBVkAAQADAAABEAA3BQgFbQADAAcAAwEAAHwFAABRAAQACgARANgDqgARAAgBrgARAFkA
+sgAGBhoAtgBWgGwFuQBWgOgAuQBQIAAAAACGAOoDBgABAEwhAAAAAIYYZQQGAAEAVCEAAAAAgxhl
+BAYAAQBcIQAAAACTCFEEvQABAIghAAAAAJMI8ADCAAEAjyEAAAAAkwj8AMcAAQCXIQAAAACWCKMF
+zQACAJ4hAAAAAIYYZQQGAAIApiEAAAAAkRhrBNIAAgAAAAEAAgMJAGUEAQARAGUEBgAZAGUECgAp
+AGUEEAAxAGUEEAA5AGUEEABBAGUEEABJAGUEEABRAGUEEABZAGUEEABhAGUEEABpAGUEBgCpAGUE
+BgDRAGUEFQDhAGUEBgB5AGUEBgDpAAgAKQCBAGUELgB5AE8ANgAMAK8FSQCJAIcATgCJAGkAUgCx
+ACsDVwABAYoFWwAJAQcGYQBxAHQFaAAZAccFAQAhAUwBBgBxAGUEBgCxAGUEBgApAdEAbgApARcG
+dwC5AGUEfQDZAGUEBgAIABQAoAAIABgApQApAHMADQEuAAsA5QAuABMA7gAuABsADQEuACMAFgEu
+ACsAPwEuADMAPwEuADsARQEuAEMAFgEuAEsAWQEuAFMAPwEuAFsAfgFDAGMApQBJAHMADQFhAHsA
+pQBjAGsApQAbAAMAAQAEAAMAAABVBNYAAAAQAdsAAACnBeAAAgAEAAMAAgAFAAUAAQAGAAUAAgAH
+AAcAQgAEgAAAAQAAAG4kwn8AAAAAAAAiAAAABAAAAAAAAAAAAAAAhQBGAAAAAAAQAAAAAAAAAAAA
+AACOADQDAAAAAAQAAAAAAAAAAAAAAJcAQQQAAAAABAAAAAAAAAAAAAAAhQDMAwAAAAAEAAAAAAAA
+AAAAAACFAFcFAAAAAAAAAAABAAAAtgQAAAUAAgAAAABUYXNrYDEAZ2V0X1VURjgAPE1vZHVsZT4A
+dmFsdWVfXwBTVF85YzkxOWE5N2RjNmU0YmI0ODdiNDE4NDIzNDk2ODk5YQBtc2NvcmxpYgBQb3N0
+QXN5bmMAZGVmYXVsdEluc3RhbmNlAGdldF9TdGF0dXNDb2RlAEh0dHBTdGF0dXNDb2RlAGdldF9J
+c1N1Y2Nlc3NTdGF0dXNDb2RlAEh0dHBSZXNwb25zZU1lc3NhZ2UASURpc3Bvc2FibGUAUnVudGlt
+ZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAVHlwZQBGYWlsdXJlAGdldF9DdWx0dXJlAHNl
+dF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UAQXBw
+bGljYXRpb25TZXR0aW5nc0Jhc2UARGlzcG9zZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxl
+ckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2Fi
+bGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1
+dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFz
+c2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRl
+AENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRl
+AEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJp
+YnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1
+dGUAdmFsdWUARW5jb2RpbmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUb1N0cmluZwBNaWNy
+b3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3Mu
+U2NyaXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfOWM5
+MTlhOTdkYzZlNGJiNDg3YjQxODQyMzQ5Njg5OWEuZGxsAFN5c3RlbQBFbnVtAHJlc291cmNlTWFu
+AFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lz
+dGVtLlJlZmxlY3Rpb24ARXhjZXB0aW9uAEN1bHR1cmVJbmZvAFN5c3RlbS5OZXQuSHR0cABnZXRf
+UmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1
+bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUXzljOTE5YTk3ZGM2ZTRi
+YjQ4N2I0MTg0MjM0OTY4OTlhLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dp
+bmdNb2RlcwBTVF85YzkxOWE5N2RjNmU0YmI0ODdiNDE4NDIzNDk2ODk5YS5Qcm9wZXJ0aWVzAFNl
+dHRpbmdzAFN5c3RlbS5UaHJlYWRpbmcuVGFza3MAU3lzdGVtLldpbmRvd3MuRm9ybXMAU3VjY2Vz
+cwBnZXRfRHRzAFNjcmlwdFJlc3VsdHMAQ29uY2F0AE9iamVjdABTeXN0ZW0uTmV0AGdldF9EZWZh
+dWx0AGdldF9SZXN1bHQARGlhbG9nUmVzdWx0AHNldF9UYXNrUmVzdWx0AEh0dHBDbGllbnQAU3Ry
+aW5nQ29udGVudABIdHRwQ29udGVudABTeXN0ZW0uVGV4dABTaG93AE1lc3NhZ2VCb3gAZ2V0X0Fz
+c2VtYmx5AABFaAB0AHQAcAA6AC8ALwBsAG8AYwBhAGwAaABvAHMAdAA6ADUAMQAwADAALwBhAHAA
+aQAvAGMAdQBzAHQAbwBtAGUAcgAAgTd7AA0ACgAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAA
+IAAgACAAIAAgACAAIgBDAHUAcwB0AG8AbQBlAHIASQBEACIAOgAgADEAMAAxACwADQAKACAAIAAg
+ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAiAE4AYQBtAGUAIgA6ACAAIgBUAGUA
+cwB0ACAAVQBzAGUAcgAiACwADQAKACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAAIAAiAEUAbQBhAGkAbAAiADoAIAAiAHQAZQBzAHQAdQBzAGUAcgBAAGUAeABhAG0AcABsAGUA
+LgBjAG8AbQAiAA0ACgAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAH0AACFhAHAAcABs
+AGkAYwBhAHQAaQBvAG4ALwBqAHMAbwBuAAArQQBQAEkAIABjAGEAbABsACAAcwB1AGMAYwBlAHMA
+cwBmAHUAbAA6ACAAACNBAFAASQAgAGMAYQBsAGwAIABmAGEAaQBsAGUAZAA6ACAAACVBAFAASQAg
+AGMAYQBsAGwAIABmAGEAaQBsAGUAZAAhAAoACgAAcVMAVABfADkAYwA5ADEAOQBhADkANwBkAGMA
+NgBlADQAYgBiADQAOAA3AGIANAAxADgANAAyADMANAA5ADYAOAA5ADkAYQAuAFAAcgBvAHAAZQBy
+AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAABC0wxe8fOpRbixBeiRSSCmAAQgAQEIAyAA
+AQUgAQEREQQgAQEOBSABARFlDQcGEj0OEkESRRFJEk0EAAASdQcgAwEOEnUOCyACFRJ5ARJFDhJ9
+BhUSeQESRQQgABMAAyAAAgQgABFJAyAADgUAAg4ODgYAARGAiQ4FIAASgI0IAAESgJURgJkFIAAS
+gJ0HIAIBDhKAnQi3elxWGTTgiQiJhF3NgIDMkQiwP19/EdUKOgQAAAAABAEAAAADBhJdAwYSYQMG
+EhACBggDBhEUBAAAEl0EAAASYQUAAQESYQQAABIQAwAAAQQIABJdBAgAEmEECAASEAgBAAgAAAAA
+AB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfOWM5MTlhOTdk
+YzZlNGJiNDg3YjQxODQyMzQ5Njg5OWEAAAUBAAAAABMBAA5EWEMgVGVjaG5vbG9neQAAJAEAH0Nv
+cHlyaWdodCBAIERYQyBUZWNobm9sb2d5IDIwMjUAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249
+djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43tAAAAM7K774B
+AAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lv
+bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUw
+ODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQ
+tAAAAMQxAAAAAAAAAAAAAN4xAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQMQAAAAAAAAAAAAAA
+AF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAUgQAAAAAAAAAAAAAUgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAMJ/biQAAAEAwn9uJD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBLIDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAI4DAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAA+AA8AAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAEQAWABDACAAVABlAGMAaABuAG8AbABvAGcAeQAAAAAAcAAkAAEARgBp
+AGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAVABfADkAYwA5ADEAOQBhADkANwBkAGMA
+NgBlADQAYgBiADQAOAA3AGIANAAxADgANAAyADMANAA5ADYAOAA5ADkAYQAAAD4ADwABAEYAaQBs
+AGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgA5ADMAMgA2AC4AMwAyADcAMAA2AAAAAABwACgA
+AQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADkAYwA5ADEAOQBhADkANwBkAGMANgBl
+ADQAYgBiADQAOAA3AGIANAAxADgANAAyADMANAA5ADYAOAA5ADkAYQAuAGQAbABsAAAAZAAgAAEA
+TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAARABY
+AEMAIABUAGUAYwBoAG4AbwBsAG8AZwB5ACAAMgAwADIANQAAACoAAQABAEwAZQBnAGEAbABUAHIA
+YQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
+AG0AZQAAAFMAVABfADkAYwA5ADEAOQBhADkANwBkAGMANgBlADQAYgBiADQAOAA3AGIANAAxADgA
+NAAyADMANAA5ADYAOAA5ADkAYQAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
+AAAAAABTAFQAXwA5AGMAOQAxADkAYQA5ADcAZABjADYAZQA0AGIAYgA0ADgANwBiADQAMQA4ADQA
+MgAzADQAOQA2ADgAOQA5AGEAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
+AC4AMAAuADkAMwAyADYALgAzADIANwAwADYAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADkAMwAyADYALgAzADIANwAwADYAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAPAxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task 1"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{A965CF85-CCA8-4931-A48C-8ADBEF268D28}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_73f67149f33a4d94b9018a5d1bd3efd9"
+          VSTAMajorVersion="16"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::API_URL,User::InvalidRows,User::RecordsLoaded,User::SourceExcelPath"
+          ReadWriteVariables="User::LogFilePath,User::ApiCallStatus">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="ST_73f67149f33a4d94b9018a5d1bd3efd9.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{254A93E5-7A1A-425C-8E5F-5C2DF0090BCE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_73f67149f33a4d94b9018a5d1bd3efd9</RootNamespace>
+    <AssemblyName>ST_73f67149f33a4d94b9018a5d1bd3efd9</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using Microsoft.SqlServer.Dts.Runtime;
+using System;
+using System.Windows.Forms;
+using System.IO;
+using System.Net.Http;
+using System.Text;
+
+namespace ST_YourScriptNamespaceHere
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPoint]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+        private void SafeLog(string filePath, string message)
+        {
+            for (int retry = 0; retry < 3; retry++)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(filePath, true, Encoding.UTF8))
+                    {
+                        writer.WriteLine($"[{DateTime.Now}] {message}");
+                        break;
+                    }
+                }
+                catch (IOException)
+                {
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
+        }
+
+        public void Main()
+        {
+            try
+            {
+                string apiUrl = Dts.Variables["User::API_URL"].Value?.ToString() ?? "";
+                string sourceFile = Dts.Variables["User::SourceExcelPath"].Value?.ToString();
+                string logFilePath = Dts.Variables["User::LogFilePath"].Value?.ToString();
+
+                int recordsLoaded = Convert.ToInt32(Dts.Variables["User::RecordsLoaded"].Value);
+                int invalidRows = Convert.ToInt32(Dts.Variables["User::InvalidRows"].Value);
+
+                string payload = "{\"customerId\":999, \"name\":\"Demo Customer\", \"email\":\"demo@example.com\"}";
+                string apiStatus = "NotStarted";
+
+                SafeLog(logFilePath, "=== Script STARTED ===");
+                SafeLog(logFilePath, $"API URL: {apiUrl}");
+                SafeLog(logFilePath, $"Payload: {payload}");
+
+                using (HttpClient client = new HttpClient())
+                {
+                    var content = new StringContent(payload, Encoding.UTF8, "application/json");
+                    var response = client.PostAsync(apiUrl, content).GetAwaiter().GetResult();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        apiStatus = "Successful";
+                        SafeLog(logFilePath, "API Call SUCCESSFUL");
+                    }
+                    else
+                    {
+                        apiStatus = "Failed";
+                        SafeLog(logFilePath, $"API Call FAILED. Status: {response.StatusCode}");
+                    }
+                }
+
+                Dts.Variables["User::ApiCallStatus"].Value = apiStatus;
+
+                SafeLog(logFilePath, $"Records Loaded: {recordsLoaded}");
+                SafeLog(logFilePath, $"Invalid Rows: {invalidRows}");
+                SafeLog(logFilePath, $"API Call Status: {apiStatus}");
+                SafeLog(logFilePath, "=== Script COMPLETED ===");
+
+                System.Windows.Forms.MessageBox.Show
+                (
+                    $"SSIS Package executed successfully!\n" +
+                    $"Records Loaded: {recordsLoaded}\n" +
+                    $"Invalid Rows: {invalidRows}\n" +
+                    $"API Call: {apiStatus}",
+                    "Execution Status"
+                );
+
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch (Exception ex)
+            {
+                string fallback = "C:\\Temp\\final_script_error.txt";
+                SafeLog(fallback, $"ERROR: {ex.Message}\n{ex.StackTrace}");
+                Dts.Events.FireError(0, "Script Task Failure", ex.Message + "\n" + ex.StackTrace, "", 0);
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+        }
+
+        enum ScriptResults
+        {
+            Success = DTSExecResult.Success,
+            Failure = DTSExecResult.Failure
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_73f67149f33a4d94b9018a5d1bd3efd9</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_73f67149f33a4d94b9018a5d1bd3efd9</msb:DisplayName>
+    <msb:ProjectId>{22721045-5B97-49E4-A3DB-4259E54BAD48}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_73f67149f33a4d94b9018a5d1bd3efd9.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties.Settings.get_Default():ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties.Sett" +
+    "ings")]
+
+namespace ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_73f67149f33a4d94b9018a5d1bd3efd9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("DXC Technology")]
+[assembly: AssemblyProduct("ST_73f67149f33a4d94b9018a5d1bd3efd9")]
+[assembly: AssemblyCopyright("Copyright @ DXC Technology 2025")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_73f67149f33a4d94b9018a5d1bd3efd9.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_73f67149f33a4d94b9018a5d1bd3efd9.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAEEwfmgAAAAAAAAAAOAAIiALATAAABoAAAAIAAAAAAAAvjkA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGw5AABPAAAAAEAAALAEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAxBkAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAALAEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACg
+OQAAAAAAAEgAAAACAAUAKCQAAIwUAAABAAAAAAAAALQ4AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBABMAAAAAQAAERYKK0MAAxcoEAAACnMRAAAKCwdyAQAA
+cCgSAAAKjCAAAAEEKBMAAApvFAAACt4cBywGB28VAAAK3CYfZCgWAAAK3gAGF1gKBhkyuSoBHAAA
+AgASAB0vAAoAAAAAAAAFADQ5AAoQAAABGzAGALoCAAACAAARAigXAAAKbxgAAApyFQAAcG8ZAAAK
+bxoAAAolLQQmFCsFbxsAAAolLQYmcjEAAHAKAigXAAAKbxgAAApyMwAAcG8ZAAAKbxoAAAolLQMm
+KwZvGwAACiYCKBcAAApvGAAACnJfAABwbxkAAApvGgAACiUtBCYUKwVvGwAACgsCKBcAAApvGAAA
+CnKDAABwbxkAAApvGgAACigcAAAKDAIoFwAACm8YAAAKcqsAAHBvGQAACm8aAAAKKBwAAAoNcs8A
+AHATBHJeAQBwEwUCB3J0AQBwKAEAAAYCB3KiAQBwBigdAAAKKAEAAAYCB3K2AQBwEQQoHQAACigB
+AAAGcx4AAAoTBhEEKBAAAApyygEAcHMfAAAKEwcRBgYRB28gAAAKbyEAAAoTCRIJKCIAAAoTCBEI
+byMAAAosFXLsAQBwEwUCB3ICAgBwKAEAAAYrJHIqAgBwEwUCB3I4AgBwEQhvJAAACowrAAABKCUA
+AAooAQAABt4MEQYsBxEGbxUAAArcAigXAAAKbxgAAApycgIAcG8ZAAAKEQVvJgAACgIHcpoCAHAI
+jCwAAAEoJQAACigBAAAGAgdywgIAcAmMLAAAASglAAAKKAEAAAYCB3LmAgBwEQUoHQAACigBAAAG
+AgdyCgMAcCgBAAAGG40hAAABJRZyPAMAcKIlF3KGAwBwCIwsAAABKCUAAAqiJRhysAMAcAmMLAAA
+ASglAAAKoiUZctYDAHCiJRoRBaIoJwAACnLsAwBwKCgAAAomAigXAAAKFm8pAAAK3nETCnIOBABw
+EwsCEQtyTAQAcBEKbyoAAApyXAQAcBEKbysAAAooLAAACigBAAAGAigXAAAKby0AAAoWcmAEAHAR
+Cm8qAAAKclwEAHARCm8rAAAKKC4AAApyMQAAcBZvLwAACiYCKBcAAAoXbykAAAreACoAAEE0AAAC
+AAAAAwEAAHEAAAB0AQAADAAAAAAAAAAAAAAAAAAAAEgCAABIAgAAcQAAABUAAAEeAigwAAAKKh4C
+KDEAAAoqrn4BAAAELR5yiAQAcNADAAACKDIAAApvMwAACnM0AAAKgAEAAAR+AQAABCoafgIAAAQq
+HgKAAgAABCoafgMAAAQqHgIoNQAACioucwkAAAaAAwAABCoAAEJTSkIBAAEAAAAAAAwAAAB2NC4w
+LjMwMzE5AAAAAAUAbAAAACQFAAAjfgAAkAUAAJwHAAAjU3RyaW5ncwAAAAAsDQAA/AQAACNVUwAo
+EgAAEAAAACNHVUlEAAAAOBIAAFQCAAAjQmxvYgAAAAAAAAACAAABVx2iCQkDAAAA+gEzABYAAAEA
+AAAyAAAABQAAAAYAAAAKAAAAAwAAADUAAAACAAAAEAAAAAIAAAACAAAAAwAAAAQAAAACAAAAAQAA
+AAYAAAABAAAAAQAAAAAAmgQBAAAAAAAGABUDzQUGAKQDzQUGAGECugUPAEEGAAAGAI4CGAUGAPgC
+GAUGANkCGAUGAIsDGAUGADUDGAUGAE4DGAUGAKUCGAUGAMAC9gMKAGkDSQQKANgBSQQGAIsFVAAG
+ACoFVAAOAD0HSAUOAEgHSAUOAAABSAUGAAgAzQUGACwFywQGANIEywQGAEQCugUGAPkGywQGAFwF
+7QUGADYFAwUSABQChAQSAHUChAQSAPQB7gQGACkCzQUGAO0DagcGAFUBywQGABIEywQGAJgFVAAG
+ACUBywQGAJgA3AMKAHIESQQWAIMGXgEWABwBXgEGAGIHywQGAAEAlgYOAFYHSAUSAM0AAAcGABgA
+ywQaAIMHrQYaABcHrQYKAGwFSQQGAIgBywQGADEBywQGAJIHGAUAAAAASwAAAAAAAQABAAEAEADj
+BI0BOQABAAEAAAAQAPQFUAZhAAEABAAAARAAjQZQBnUAAwAIAAMBAADSBgAAWQAEAAsAEQDXBC4B
+EQDIATIBEQCuADYBBgZ9ADoBVoDCBj0BVoCoAT0BUCAAAAAAgQAZBEEBAQDEIAAAAACGAOkEBgAD
+AMAjAAAAAIYYrQUGAAMAyCMAAAAAgxitBQYAAwDQIwAAAACTCFgFRwEDAPwjAAAAAJMIsAFMAQMA
+AyQAAAAAkwi8AVEBAwALJAAAAACWCAsHVwEEABIkAAAAAIYYrQUGAAQAGiQAAAAAkRizBVwBBAAA
+AAEAIQQAAAIAFAEAAAEA1gMJAK0FAQARAK0FBgAZAK0FCgApAK0FEAAxAK0FEAA5AK0FEABBAK0F
+EABJAK0FEABRAK0FEABZAK0FEABhAK0FEABpAK0FBgC5AK0FBgDhAK0FFQDxAK0FBgD5AB4AIQB5
+AK0FJgABAXYHLgAJAfIGNAARAX4BEAAZAQwCBgAhAUIFOwBxAMoGWAApAX8GXgAxAcIEZAA5AcID
+awDBABAEbwBBARYAcwAJAesGeACJAK0FBgCRAK0FfgCJAI4AhgAMAIAFnAAUADMHrACZANwAsQCZ
+AL4AtQAJAfIGuwA5AcwDwQAJAesGxgBpAX4HzAApASQHAQCpAPQAbwCpAJ8AbwAJAesG1AApAeAG
+3AAJAesG4gB5AaMF6QBxAK0FBgDBAK0FBgCBAUMB8gCBAY4H+wDJAK0FAQHpAK0FBgAIABQAJAEI
+ABgAKQEpAHMAlwEuAAsAbwEuABMAeAEuABsAlwEuACMAoAEuACsAyQEuADMAyQEuADsAzwEuAEMA
+oAEuAEsA4wEuAFMAyQEuAFsACAJDAGMAKQFJAHMAlwFhAHsAKQFjAGsAKQEbAEAAAwABAAQAAwAA
+AFwFYAEAANABZQEAAA8HagECAAUAAwACAAYABQABAAcABQACAAgABwCUAKUABIAAAAEAAAB1JEx9
+AAAAAAAAJwAAAAQAAAAAAAAAAAAAAAkBhQAAAAAAEAAAAAAAAAAAAAAAEgEqBAAAAAAEAAAAAAAA
+AAAAAAAbAUgFAAAAAAQAAAAAAAAAAAAAAAkBywQAAAAAEAAAAAAAAAAAAAAAEgFeAAAAAAAEAAAA
+AAAAAAAAAAAJAa0GAAAAAAAAAAABAAAA/gUAAAUAAgAAAAAAAFRhc2tgMQBUYXNrQXdhaXRlcmAx
+AFRvSW50MzIAZ2V0X1VURjgAU1RfNzNmNjcxNDlmMzNhNGQ5NGI5MDE4YTVkMWJkM2VmZDkAPE1v
+ZHVsZT4AU3lzdGVtLklPAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2YWx1ZV9fAG1z
+Y29ybGliAFBvc3RBc3luYwBUaHJlYWQAZ2V0X1N0YWNrVHJhY2UAZGVmYXVsdEluc3RhbmNlAGdl
+dF9TdGF0dXNDb2RlAEh0dHBTdGF0dXNDb2RlAGdldF9Jc1N1Y2Nlc3NTdGF0dXNDb2RlAGdldF9N
+ZXNzYWdlAEh0dHBSZXNwb25zZU1lc3NhZ2UAbWVzc2FnZQBWYXJpYWJsZQBJRGlzcG9zYWJsZQBS
+dW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBEYXRlVGltZQBNaWNyb3NvZnQuU3Fs
+U2VydmVyLkR0cy5SdW50aW1lAFdyaXRlTGluZQBUeXBlAFNUX1lvdXJTY3JpcHROYW1lc3BhY2VI
+ZXJlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFS
+VFNjcmlwdE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBEaXNwb3NlAEVk
+aXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9u
+VXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRy
+aWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBU
+YXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFz
+c2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0
+ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJ
+U1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBS
+dW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBnZXRfVmFsdWUAc2V0X1ZhbHVlAHZhbHVlAFN5
+c3RlbS5UaHJlYWRpbmcARW5jb2RpbmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUb1N0cmlu
+ZwBTYWZlTG9nAGZpbGVQYXRoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3Nv
+ZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3Rl
+bS5Db21wb25lbnRNb2RlbABTVF83M2Y2NzE0OWYzM2E0ZDk0YjkwMThhNWQxYmQzZWZkOS5kbGwA
+Z2V0X0l0ZW0AU3lzdGVtAEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmln
+dXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJT0V4Y2VwdGlv
+bgBDdWx0dXJlSW5mbwBTbGVlcABTeXN0ZW0uTmV0Lkh0dHAAZ2V0X1Jlc291cmNlTWFuYWdlcgBF
+dmVudHNPYmplY3RXcmFwcGVyAEdldEF3YWl0ZXIAU3RyZWFtV3JpdGVyAFRleHRXcml0ZXIARmly
+ZUVycm9yAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29t
+cGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUXzczZjY3MTQ5ZjMzYTRkOTRiOTAxOGE1
+ZDFiZDNlZmQ5LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBT
+VF83M2Y2NzE0OWYzM2E0ZDk0YjkwMThhNWQxYmQzZWZkOS5Qcm9wZXJ0aWVzAGdldF9WYXJpYWJs
+ZXMAU2V0dGluZ3MAU3lzdGVtLlRocmVhZGluZy5UYXNrcwBTeXN0ZW0uV2luZG93cy5Gb3JtcwBT
+dWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfRXZlbnRzAENvbmNhdABGb3JtYXQAT2Jq
+ZWN0AFN5c3RlbS5OZXQAZ2V0X0RlZmF1bHQARGlhbG9nUmVzdWx0AHNldF9UYXNrUmVzdWx0AEdl
+dFJlc3VsdABIdHRwQ2xpZW50AFN0cmluZ0NvbnRlbnQASHR0cENvbnRlbnQAQ29udmVydABTeXN0
+ZW0uVGV4dABnZXRfTm93AFNob3cATWVzc2FnZUJveABnZXRfQXNzZW1ibHkAAAATWwB7ADAAfQBd
+ACAAewAxAH0AABtVAHMAZQByADoAOgBBAFAASQBfAFUAUgBMAAABACtVAHMAZQByADoAOgBTAG8A
+dQByAGMAZQBFAHgAYwBlAGwAUABhAHQAaAAAI1UAcwBlAHIAOgA6AEwAbwBnAEYAaQBsAGUAUABh
+AHQAaAAAJ1UAcwBlAHIAOgA6AFIAZQBjAG8AcgBkAHMATABvAGEAZABlAGQAACNVAHMAZQByADoA
+OgBJAG4AdgBhAGwAaQBkAFIAbwB3AHMAAICNewAiAGMAdQBzAHQAbwBtAGUAcgBJAGQAIgA6ADkA
+OQA5ACwAIAAiAG4AYQBtAGUAIgA6ACIARABlAG0AbwAgAEMAdQBzAHQAbwBtAGUAcgAiACwAIAAi
+AGUAbQBhAGkAbAAiADoAIgBkAGUAbQBvAEAAZQB4AGEAbQBwAGwAZQAuAGMAbwBtACIAfQAAFU4A
+bwB0AFMAdABhAHIAdABlAGQAAC09AD0APQAgAFMAYwByAGkAcAB0ACAAUwBUAEEAUgBUAEUARAAg
+AD0APQA9AAATQQBQAEkAIABVAFIATAA6ACAAABNQAGEAeQBsAG8AYQBkADoAIAAAIWEAcABwAGwA
+aQBjAGEAdABpAG8AbgAvAGoAcwBvAG4AABVTAHUAYwBjAGUAcwBzAGYAdQBsAAAnQQBQAEkAIABD
+AGEAbABsACAAUwBVAEMAQwBFAFMAUwBGAFUATAAADUYAYQBpAGwAZQBkAAA5QQBQAEkAIABDAGEA
+bABsACAARgBBAEkATABFAEQALgAgAFMAdABhAHQAdQBzADoAIAB7ADAAfQAAJ1UAcwBlAHIAOgA6
+AEEAcABpAEMAYQBsAGwAUwB0AGEAdAB1AHMAACdSAGUAYwBvAHIAZABzACAATABvAGEAZABlAGQA
+OgAgAHsAMAB9AAAjSQBuAHYAYQBsAGkAZAAgAFIAbwB3AHMAOgAgAHsAMAB9AAAjQQBQAEkAIABD
+AGEAbABsACAAUwB0AGEAdAB1AHMAOgAgAAAxPQA9AD0AIABTAGMAcgBpAHAAdAAgAEMATwBNAFAA
+TABFAFQARQBEACAAPQA9AD0AAElTAFMASQBTACAAUABhAGMAawBhAGcAZQAgAGUAeABlAGMAdQB0
+AGUAZAAgAHMAdQBjAGMAZQBzAHMAZgB1AGwAbAB5ACEACgAAKVIAZQBjAG8AcgBkAHMAIABMAG8A
+YQBkAGUAZAA6ACAAewAwAH0ACgAAJUkAbgB2AGEAbABpAGQAIABSAG8AdwBzADoAIAB7ADAAfQAK
+AAAVQQBQAEkAIABDAGEAbABsADoAIAAAIUUAeABlAGMAdQB0AGkAbwBuACAAUwB0AGEAdAB1AHMA
+AD1DADoAXABUAGUAbQBwAFwAZgBpAG4AYQBsAF8AcwBjAHIAaQBwAHQAXwBlAHIAcgBvAHIALgB0
+AHgAdAAAD0UAUgBSAE8AUgA6ACAAAAMKAAAnUwBjAHIAaQBwAHQAIABUAGEAcwBrACAARgBhAGkA
+bAB1AHIAZQAAcVMAVABfADcAMwBmADYANwAxADQAOQBmADMAMwBhADQAZAA5ADQAYgA5ADAAMQA4
+AGEANQBkADEAYgBkADMAZQBmAGQAOQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUA
+cgBjAGUAcwAAAADdaFAMy6bETIXh30IezbfbAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFtBQcC
+CBI9BAAAEn0HIAMBDgISfQUAABGAgQYAAw4OHBwEAAEBCBcHDA4OCAgODhJFEkkSTRURUQESTRJV
+DgUgABKAlQUgABKAmQYgARKAnRwDIAAcAyAADgQAAQgcBQACDg4OByADAQ4SfQ4NIAIVEoClARJN
+DhKAqQcVEoClARJNCCAAFRFRARMABhURUQESTQQgABMAAyAAAgUgABGArQUAAg4OHAQgAQEcBQAB
+Dh0OBwACEYC5Dg4HAAQODg4ODgUgABKAvQYAAw4ODg4IIAUCCA4ODggIAAESgMERgMUFIAASgMkH
+IAIBDhKAyQi3elxWGTTgiQiJhF3NgIDMkQiwP19/EdUKOgQAAAAABAEAAAADBhJlAwYSaQMGEhAC
+BggDBhEUBSACAQ4OBAAAEmUEAAASaQUAAQESaQQAABIQAwAAAQQIABJlBAgAEmkECAASEAgBAAgA
+AAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfNzNmNjcx
+NDlmMzNhNGQ5NGI5MDE4YTVkMWJkM2VmZDkAAAUBAAAAABMBAA5EWEMgVGVjaG5vbG9neQAAJAEA
+H0NvcHlyaWdodCBAIERYQyBUZWNobm9sb2d5IDIwMjUAAEkBABouTkVURnJhbWV3b3JrLFZlcnNp
+b249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43AAC0AAAA
+zsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBW
+ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYx
+OTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBB
+RFBBRFC0AAAAlDkAAAAAAAAAAAAArjkAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKA5AAAAAAAA
+AAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAABSBAAAAAAAAAAAAABSBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEATH11JAAAAQBMfXUkPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAEsgMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAjgMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAAD4ADwABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAARABYAEMAIABUAGUAYwBoAG4AbwBsAG8AZwB5AAAAAABwACQAAQBGAGkAbABl
+AEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBUAF8ANwAzAGYANgA3ADEANAA5AGYAMwAzAGEA
+NABkADkANABiADkAMAAxADgAYQA1AGQAMQBiAGQAMwBlAGYAZAA5AAAAPgAPAAEARgBpAGwAZQBW
+AGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADkAMwAzADMALgAzADIAMAA3ADYAAAAAAHAAKAABAEkA
+bgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8ANwAzAGYANgA3ADEANAA5AGYAMwAzAGEANABk
+ADkANABiADkAMAAxADgAYQA1AGQAMQBiAGQAMwBlAGYAZAA5AC4AZABsAGwAAABkACAAAQBMAGUA
+ZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIABEAFgAQwAg
+AFQAZQBjAGgAbgBvAGwAbwBnAHkAIAAyADAAMgA1AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQA
+ZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBl
+AAAAUwBUAF8ANwAzAGYANgA3ADEANAA5AGYAMwAzAGEANABkADkANABiADkAMAAxADgAYQA1AGQA
+MQBiAGQAMwBlAGYAZAA5AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAA
+AFMAVABfADcAMwBmADYANwAxADQAOQBmADMAMwBhADQAZAA5ADQAYgA5ADAAMQA4AGEANQBkADEA
+YgBkADMAZQBmAGQAOQAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAw
+AC4AOQAzADMAMwAuADMAMgAwADcANgAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIA
+cwBpAG8AbgAAADEALgAwAC4AOQAzADMAMwAuADMAMgAwADcANgAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAwDkAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate OLE DB Destination 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8683D8C2-A698-4145-9E4C-605394E2D1EC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate OLE DB Destination 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{526CC336-E8E2-41F1-B1DB-D8801DA6BE45}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[OLE DB Destination 1];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D1B9F74-EEE3-4EED-B57C-4CD4E78A9A33}"
+      DTS:From="Package\Truncate OLE DB Destination 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extract and Load Data from Excel" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{D3DB15A5-2EB6-4ED9-ADDD-034FED6F0567}"
+      DTS:From="Package\Extract and Load Data from Excel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Script Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel"
+          TopLeft="18.1249991897494,22.5789471205087" />
+        <NodeLayout
+          Size="133.333333333334,42.6666666666667"
+          Id="Package\Script Task"
+          TopLeft="38.1249982956806,231.263155355513" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Script Task 1"
+          TopLeft="115.62499483116,100.578946264084" />
+        <NodeLayout
+          Size="229.333333333334,42.6666666666667"
+          Id="Package\Truncate OLE DB Destination 1"
+          TopLeft="332.499985136092,23.2631576393119" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="332.499985136092,44.2543857132436">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.7083192796759,0"
+              Start="0,0"
+              End="-68.2083192796759,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-68.2083192796759,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="137.458332523083,65.2456137871754">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.8333289747439,35.3333324769086"
+              Start="0,0"
+              End="48.8333289747439,27.8333324769086">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.6666662384543" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.6666662384543"
+                    Point2="0,17.6666662384543"
+                    Point3="4,17.6666662384543" />
+                  <mssgle:LineSegment
+                    End="44.8333289747439,17.6666662384543" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.8333289747439,17.6666662384543"
+                    Point2="48.8333289747439,17.6666662384543"
+                    Point3="48.8333289747439,21.6666662384543" />
+                  <mssgle:LineSegment
+                    End="48.8333289747439,27.8333324769086" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract and Load Data from Excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="142.666666666667,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\Excel Source"
+          TopLeft="44.9999979883433,28.7368417897383" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\OLE DB Destination"
+          TopLeft="391.249982509763,287.368417897383" />
+        <NodeLayout
+          Size="132,64"
+          Id="Package\Extract and Load Data from Excel\Row Count"
+          TopLeft="408.124981755391,186.105261114496" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\Row Count 1"
+          TopLeft="709.999968260528,19.1578945264922" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\Flat File Destination"
+          TopLeft="621.874972200022,119.052630271773" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\Lookup"
+          TopLeft="381.874982928858,110.15789352733" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\Conditional Split"
+          TopLeft="428.749980833382,34.894736458968" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\Extract and Load Data from Excel\Data Conversion"
+          TopLeft="224.999989941716,28.052631270935" />
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[Row Count Output 1]"
+          TopLeft="476.354148799244,250.105261114496">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.2631567828873"
+              Start="0,0"
+              End="0,29.7631567828873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7631567828873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[Lookup No Match Output]"
+          TopLeft="439.208316262191,152.824560193997">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.9166654932002,33.2807009204988"
+              Start="0,0"
+              End="34.9166654932002,25.7807009204988">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6403504602494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6403504602494"
+                    Point2="0,16.6403504602494"
+                    Point3="4,16.6403504602494" />
+                  <mssgle:LineSegment
+                    End="30.9166654932002,16.6403504602494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.9166654932002,16.6403504602494"
+                    Point2="34.9166654932002,16.6403504602494"
+                    Point3="34.9166654932002,20.6403504602494" />
+                  <mssgle:LineSegment
+                    End="34.9166654932002,25.7807009204988" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.3480539721499,21.6403504602494,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[InvalidRows]"
+          TopLeft="586.083314166715,56.2280697923013">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="123.916654093812,-15.7368419324757"
+              Start="0,0"
+              End="116.416654093812,-15.7368419324757">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.9583270469062,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.9583270469062,0"
+                    Point2="61.9583270469062,0"
+                    Point3="61.9583270469062,-4" />
+                  <mssgle:LineSegment
+                    End="61.9583270469062,-11.7368419324757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.9583270469062,-11.7368419324757"
+                    Point2="61.9583270469062,-15.7368419324757"
+                    Point3="65.9583270469062,-15.7368419324757" />
+                  <mssgle:LineSegment
+                    End="116.416654093812,-15.7368419324757" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="34.6941473594062,1,54.528359375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[Excel Source Output]"
+          TopLeft="187.66666465501,49.72806986367">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.333325286706,0"
+              Start="0,0"
+              End="29.833325286706,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29.833325286706,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[Data Conversion Output]"
+          TopLeft="383.666656608383,52.8070171982848">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.0833242249993,0"
+              Start="0,0"
+              End="37.5833242249993,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.5833242249993,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[ValidRows]"
+          TopLeft="507.416647500049,77.5614031256346">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-68.2083312378577,32.5964904016956"
+              Start="0,0"
+              End="-68.2083312378577,25.0964904016956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2982452008478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2982452008478"
+                    Point2="0,16.2982452008478"
+                    Point3="-4,16.2982452008478" />
+                  <mssgle:LineSegment
+                    End="-64.2083312378577,16.2982452008478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.2083312378577,16.2982452008478"
+                    Point2="-68.2083312378577,16.2982452008478"
+                    Point3="-68.2083312378577,20.2982452008478" />
+                  <mssgle:LineSegment
+                    End="-68.2083312378577,25.0964904016956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.4549273376789,21.2982452008478,46.7015234375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and Load Data from Excel.Paths[Row Count Output 11]"
+          TopLeft="780.666634927194,61.8245611931589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-72.1249960605059,57.2280690786141"
+              Start="0,0"
+              End="-72.1249960605059,49.7280690786141">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6140345393071" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.6140345393071"
+                    Point2="0,28.6140345393071"
+                    Point3="-4,28.6140345393071" />
+                  <mssgle:LineSegment
+                    End="-68.1249960605059,28.6140345393071" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.1249960605059,28.6140345393071"
+                    Point2="-72.1249960605059,28.6140345393071"
+                    Point3="-72.1249960605059,32.6140345393071" />
+                  <mssgle:LineSegment
+                    End="-72.1249960605059,49.7280690786141" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and Load Data from Excel\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and Load Data from Excel\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and Load Data from Excel\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[OLE DB Destination 1]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
