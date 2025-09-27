@@ -43,11 +43,12 @@ The solution has two key parts:
 
 
 ## 🛠️ Tech Stack
-ETL: SSIS (SQL Server Integration Services)
-Backend: ASP.NET Core Web API
-Language: C#
-Database: In-memory store (no real DB required)
-Documentation/UI: Swagger
+- **ETL**: SSIS (SQL Server Integration Services)  
+- **Backend**: ASP.NET Core Web API  
+- **Language**: C#  
+- **Database**: In-memory store (no real DB required)  
+- **Documentation/UI**: Swagger  
+
 
 ---
 
