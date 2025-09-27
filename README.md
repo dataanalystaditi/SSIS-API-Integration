@@ -25,10 +25,12 @@ The solution has two key parts:
    git clone https://github.com/YOUR_USERNAME/SSIS_API_Integration.git
 
 2. Navigate to the API project:
-cd SSIS_API_Integration/API/DummyCustomerApi
+   ```bash
+   cd SSIS_API_Integration/API/DummyCustomerApi
 
-3.Run the API:
-dotnet run --urls "http://localhost:5055"
+3. Run the API:
+   ```bash
+   dotnet run --urls "http://localhost:5055"
 
 4. Open in your browser:
 Swagger UI → http://localhost:5055/swagger
