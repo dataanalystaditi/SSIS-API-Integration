@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSIS API Integration | Portfolio Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🚀 SSIS API Integration Project</h1>
+    <p>By <a href="https://www.linkedin.com/in/aditiagarwal9/" target="_blank">Aditi Agarwal</a> — Data Analyst | BI | .NET</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#run">Run Locally</a>
+      <a href="https://github.com/dataanalystaditi/SSIS-API-Integration-Project" target="_blank">GitHub Repo</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>📌 About the Project</h2>
+    <p>This project demonstrates how to integrate <b>SSIS (SQL Server Integration Services)</b> with a <b>.NET Core Web API</b>.</p>
+    <ul>
+      <li>ETL pipeline in SSIS (dummy configs, no secrets).</li>
+      <li>ASP.NET Core API with Swagger, in-memory DB, GET & POST endpoints.</li>
+      <li>Portfolio-ready showcase with screenshots & setup guide.</li>
+    </ul>
+  </section>
+
+  <section id="screenshots">
+    <h2>📷 Screenshots</h2>
+    <div class="gallery">
+      <img src="../Screenshots/ssis_control_flow.png" alt="SSIS Control Flow">
+      <img src="../Screenshots/ssis_data_flow.png" alt="SSIS Data Flow">
+      <img src="../Screenshots/api_swagger.png" alt="Swagger UI">
+      <img src="../Screenshots/api_post.png" alt="POST Request">
+      <img src="../Screenshots/api_post_response.png" alt="POST Response">
+    </div>
+  </section>
+
+  <section id="run">
+    <h2>⚡ Run Locally</h2>
+    <pre>
+git clone https://github.com/dataanalystaditi/SSIS-API-Integration-Project.git
+cd SSIS-API-Integration-Project/API/DummyCustomerApi
+dotnet restore
+dotnet build
+dotnet run --urls "http://localhost:5055"
+    </pre>
+    <p>Swagger UI → <code>http://localhost:5055/swagger</code></p>
+  </section>
+
+  <footer>
+    <p>👩‍💻 Author: <a href="https://github.com/dataanalystaditi" target="_blank">dataanalystaditi</a></p>
+    <p><small>© 2025 Aditi Agarwal | Portfolio Project</small></p>
+  </footer>
+</body>
+</html>
