@@ -14,6 +14,7 @@ The solution has two key parts:
 
 ---
 
+
 ## 🚀 Run the Dummy API
 
 ### Requirements
@@ -39,6 +40,8 @@ The solution has two key parts:
    GET Customers → http://localhost:5055/api/samplecustomers
 
 ---
+
+
 ## 🛠️ Tech Stack
 ETL: SSIS (SQL Server Integration Services)
 Backend: ASP.NET Core Web API
@@ -47,6 +50,8 @@ Database: In-memory store (no real DB required)
 Documentation/UI: Swagger
 
 ---
+
+
 ## 📷 Screenshots
 ### SSIS Part (shows ETL flow)
 1. Control Flow 
@@ -69,11 +74,15 @@ Documentation/UI: Swagger
 <img width="1886" height="1029" alt="api_post_response" src="https://github.com/user-attachments/assets/ee25b40e-3666-4131-a22b-99c5003a2adf" />
 
 ---
+
+
 ## 🔒 Security Note
 Files like appsettings.json and SSIS config files (.dtsConfig) contain dummy values only.
 Real database credentials, API keys, or sensitive information are not included.
 
 ---
+
+
 ## ✨ Author
 👩‍💻 Aditi Agarwal
 GitHub: [dataanalystaditi](https://github.com/dataanalystaditi)
