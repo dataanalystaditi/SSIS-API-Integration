@@ -72,5 +72,5 @@ Real database credentials, API keys, or sensitive information are not included.
 ---
 ## ✨ Author
 👩‍💻 Aditi Agarwal
-   - `https://github.com/dataanalystaditi` → your GitHub username.  
-   - `https://www.linkedin.com/in/aditiagarwal9/` → your LinkedIn profile link.  
+GitHub: [dataanalystaditi](https://github.com/dataanalystaditi)
+LinkedIn: [Aditi Agarwal](https://www.linkedin.com/in/aditiagarwal9/)
