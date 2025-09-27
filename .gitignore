@@ -1,0 +1,23 @@
+# Visual Studio / build
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# SSIS / Visual Studio specific
+*.dtsConfig
+*.dtproj.user
+
+# Logs / runtime output
+Logs/
+RejectedData/
+*.log
+
+# Data files
+Customers.xlsx
+
+# OS files
+Thumbs.db
+.DS_Store

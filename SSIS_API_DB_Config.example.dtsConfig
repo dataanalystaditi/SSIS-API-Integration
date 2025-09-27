@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::API_URL].Properties[Value]" ValueType="String">
+    <ConfiguredValue>https://your-api-host:port/api/Customer</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[Excel Connection].Properties[ConnectionString]" ValueType="String">
+    <ConfiguredValue>Provider=Microsoft.ACE.OLEDB.16.0;Data Source=./data/Customers.sample.xlsx;Extended Properties="Excel 12.0 XML;HDR=YES";</ConfiguredValue>
+  </Configuration>
+</DTSConfiguration>
