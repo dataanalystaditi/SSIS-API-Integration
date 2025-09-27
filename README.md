@@ -33,8 +33,8 @@ The solution has two key parts:
    dotnet run --urls "http://localhost:5055"
 
 4. Open in your browser:
-Swagger UI → http://localhost:5055/swagger
-GET Customers → http://localhost:5055/api/samplecustomers
+   `Swagger UI → http://localhost:5055/swagger`
+   `GET Customers → http://localhost:5055/api/samplecustomers`
 
 ---
 ## 🛠️ Tech Stack
